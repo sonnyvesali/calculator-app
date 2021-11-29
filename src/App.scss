@@ -42,13 +42,11 @@ h1 {
   font-size: 200%;
   border: none;
   background-color: #900c3e;
-}
-
-.The_buttons > button > h1 {
-  background-color: #c70039;
+  transition: 0.5s;
 }
 
 .The_Buttons > button:hover {
+  transition: 0.5s;
   background-color: #ff5733;
 }
 

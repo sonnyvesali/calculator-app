@@ -15,7 +15,7 @@ export class Buttons extends Component {
       operatorChosen: false,
       negativeInput1: false,
       negativeInput2: false,
-      answer: "",
+      answer: null,
     };
 
     this.inputCompletion = this.inputCompletion.bind(this);
@@ -208,17 +208,34 @@ export class Buttons extends Component {
       }
 
       if (array >= Object.keys(btnChars).length - 1) {
-        return (
-          <div>
-            <div className="Output-Screen">
-              <h1>
-                {this.state.input1} {this.state.operator} {this.state.input2} =
-                {this.state.answer}
-              </h1>
+        let state;
+
+        if (!this.state.answer) {
+          state = (
+            <div>
+              <div className="Output-Screen">
+                <h1>
+                  {this.state.input1} {this.state.operator} {this.state.input2}
+                </h1>
+              </div>
+              <div className="The_Buttons">{pushedBtnArr}</div>
             </div>
-            <div className="The_Buttons">{pushedBtnArr}</div>
-          </div>
-        );
+          );
+        } else if (this.state.answer) {
+          state = (
+            <div>
+              <div className="Output-Screen">
+                <h1>
+                  {this.state.input1} {this.state.operator} {this.state.input2}{" "}
+                  ={Number(this.state.answer).toFixed(2)}
+                </h1>
+              </div>
+              <div className="The_Buttons">{pushedBtnArr}</div>
+            </div>
+          );
+        }
+
+        return <div>{state}</div>;
       }
     }
   }
